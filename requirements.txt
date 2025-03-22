@@ -1,0 +1,12 @@
+matplotlib
+pandas
+numpy
+dash
+ipykernel
+plotly
+kaleido
+scikit-learn
+ollama
+networkx
+langchain
+langchain-ollama 
