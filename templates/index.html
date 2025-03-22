@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Dr.House Bot</title>
+</head>
+<body>
+    <div class="contents">
+        <h1>House Bot: Dr. House explains Cryptography</h1>
+        <form method="POST" action="{{ url_for('get_response_from_input') }}">
+            <input type="text" id="user_input" name="user_input" placeholder="Ask anything about Cryptography Algorithms" required>
+            <button type="submit">Send</button>
+        </form>
+        {% if user_input %}
+            <div class="user">
+                <h1>You:</h1>
+                <p id="user">{{ user_input }}</p>
+            </div>
+        {% endif %}
+        {% if bot_response %}
+            <div class="bot">
+                <h1>House Bot:</h1>
+                <p id="bot">{{ bot_response }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

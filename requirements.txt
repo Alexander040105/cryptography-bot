@@ -10,3 +10,4 @@ ollama
 networkx
 langchain
 langchain-ollama 
+flask
