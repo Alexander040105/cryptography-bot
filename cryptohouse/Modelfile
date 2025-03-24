@@ -1,6 +1,5 @@
 # To build a new Modelfile based on this, replace FROM with:
 FROM llama3.2:1b
-
 PARAMETER temperature 1
 PARAMETER num_ctx 3000  
 
