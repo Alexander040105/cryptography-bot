@@ -11,3 +11,6 @@ networkx
 langchain
 langchain-ollama 
 flask
+langchain_community
+faiss-cpu 
+tiktoken
