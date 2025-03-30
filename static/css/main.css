@@ -6,14 +6,16 @@
 */
 
 :root {
---primary-color: #042959;
---secondary-color: #bf9e60;
+--primary-color: #1f1f1f;
+--secondary-color: #3a3a3a;
 --text-light: #f2f2f2;
---text-dark: #042959;
+--text-dark: #1f1f1f;
 --bubble-bg: #f2f2f2;
+--bubble-bg2: #1c61f7;
 --bubble-radius: 20px;
 --transition-speed: 0.3s;
 }
+
 * {
     margin: 0;
     padding: 0;
@@ -22,7 +24,6 @@
 
 body {
     background-color: var(--primary-color);
-    color: var(--text-light);
     font-family: "Ubuntu", sans-serif;
     font-size: 16px;
     line-height: 1.5;
@@ -47,6 +48,9 @@ h1 {
     font-size: 1.8rem;
     margin-bottom: 2rem;
     text-align: center;
+}
+
+.header{
     color: var(--text-light);
 }
 
@@ -59,27 +63,58 @@ h1 {
 .bot {
     padding: 1.25rem;
     border-radius: var(--bubble-radius);
-    background-color: var(--bubble-bg);
-    color: var(--text-dark);
     max-width: 80%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: transform var(--transition-speed);
     animation: fadeIn 0.3s ease-in-out;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start;
 }
 
 .user {
-    align-self: flex-start;
-    border-top-left-radius: 4px;
-    margin-right: auto;
-    transform-origin: left bottom;
+    background-color: var(--bubble-bg2) !important;
+    color: var(--text-light) !important;
 }
 
-.bot {
+.bot{
+    background-color: var(--bubble-bg) !important;
+    color: var(--text-dark) !important;
+}
+
+/* .user {
     align-self: flex-end;
     border-top-right-radius: 4px;
     margin-left: auto;
     transform-origin: right bottom;
 }
+
+.bot {
+    align-self: flex-start;
+    border-top-left-radius: 4px;
+    margin-right: auto;
+    transform-origin: left bottom;
+} */
+
+.user {
+    align-self: flex-end;
+    border-top-right-radius: 4px;
+    border-top-left-radius: var(--bubble-radius);
+    margin-left: auto;
+    margin-right: 0;
+    transform-origin: right bottom;
+    flex-direction: row-reverse;
+}
+
+.bot {
+    align-self: flex-start;
+    border-top-left-radius: 4px;
+    border-top-right-radius: var(--bubble-radius);
+    margin-right: auto;
+    margin-left: 0;
+    transform-origin: left bottom;
+}
+
 .user:hover,
 .bot:hover {
     transform: scale(1.02);
@@ -90,16 +125,15 @@ h1 {
     font-size: 0.9rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    color: var(--text-dark);
     opacity: 0.8;
 }
 
 .user h1 {
-    text-align: left;
+    text-align: right;
 }
 
 .bot h1 {
-    text-align: right;
+    text-align: left;
 }
 
 p {
@@ -108,12 +142,24 @@ p {
     width: 100%;
 }
 
-#user {
-    text-align: left;
+#user, .user{
+    text-align: right;
 }
 
 #bot {
-    text-align: right;
+    text-align: left;
+}
+
+.profile-image {
+    margin-right: 12px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--secondary-color);
+    object-fit: cover;
 }
 
 /* Form styling */
@@ -161,13 +207,13 @@ form button {
     border: none;
     border-radius: 16px;
     background-color: var(--secondary-color);
-    color: var(--text-dark);
+    color: var(--text-light);
     cursor: pointer;
     transition: background-color var(--transition-speed), transform var(--transition-speed);
 }
 
 form button:hover {
-    background-color: #d4b77a;
+    background-color: var(--bubble-bg2);
     transform: translateY(-2px);
 }
 
@@ -197,6 +243,9 @@ form button:active {
         font-size: 1.5rem;
     }
 
+    .header-image {
+        max-width: 200px;
+    }
     .user,
     .bot {
         max-width: 90%;
@@ -225,6 +274,15 @@ form button:active {
     .user,
     .bot {
         max-width: 95%;
+    }
+
+    .header-image {
+        max-width: 150px;
+    }
+
+    .avatar {
+        width: 30px;
+        height: 30px;
     }
 }
 

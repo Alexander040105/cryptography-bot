@@ -2,6 +2,8 @@ from flask import Flask, request, render_template
 import re
 from langchain_ollama import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate
+import random
+import time
 
 template = """
 
@@ -15,7 +17,8 @@ Here is the conversation history: {context}
 Question: {question}  
 """
 
-model_llama = "cryptohouse3"
+# model_llama = "cryptohouse3"
+model_llama = "cryptohouse4"
 model = OllamaLLM(model=model_llama)
 prompt = ChatPromptTemplate.from_template(template)
 chain = prompt | model
@@ -27,10 +30,56 @@ app = Flask(__name__)
 def get_response_from_input():
     if request.method == 'POST':
         user_input = request.form.get("user_input")
-        chain = prompt | model
-        result = chain.invoke({"context": "", "question": f"{user_input}"})
-        bot_response = result
+        crypto_keywords = ["rsa", "aes", "sha-256", "ecc", "cryptography", "cryptography algorithms", "cryptographic algorithms", "cryptographic hash Functions", "crypto", 
+                        "network security", "hello", "Hello", "rot13", "encryption", "decryption", "cipher", "key exchange", "digital signature", 
+                        "hash function", "block cipher", "stream cipher", "public key cryptography", "private key cryptography", "symmetric encryption", 
+                        "asymmetric encryption", "cryptanalysis", "cryptographic protocols", "ceasar cipher", "?", "cryptographic primitives", "cryptographic systems", "cryptographic keys",
+                        "cryptographic algorithms", "cryptographic techniques", "cryptographic standards", "cryptographic methods", "cryptographic protocols",
+                        ]
+        
+        
+        house_cryptography_responses = [
+            "Oh, sure, let’s talk about random topics—except I only do cryptography.",
+            "Ask me about cryptographic algorithms, or keep talking to yourself. Your choice.",
+            "You want medical advice? Call a doctor. You want cryptography? Now we’re talking.",
+            "Unless your question involves encryption, I’m just here for decoration.",
+            "I’d love to discuss this topic, but I only care about ciphers and keys.",
+            "If it doesn’t involve cryptographic security, I’m not legally required to care.",
+            "Oh, you want to talk about something else? That’s adorable. Try cryptography.",
+            "I could pretend to care about another topic, but lying takes effort. Just ask about cryptography.",
+            "If it’s not about encryption, then why are we even having this conversation?",
+            "Talk cryptographic algorithms, or go ask Siri about your horoscope.",
+            "I do cryptography. Not small talk, not weather updates, not life advice. Just cryptography.",
+            "You have two choices: talk cryptography or enjoy the sound of silence.",
+            "Public-key encryption? Perfect. Anything else? Let’s pretend you didn’t say that.",
+            "Cryptography is my thing. If you want cooking tips, ask literally anyone else.",
+            "I’d explain why cryptography is fascinating, but I’d rather you just ask about it."
+        ]
+
+        #forcing the topic filters
+        if any(word in user_input.lower().split() for word in crypto_keywords):  # Check whole words
+            chain = prompt | model
+            result = chain.invoke({"context": "", "question": user_input})
+            bot_response = result
+        else:
+            bot_response = random.choice(house_cryptography_responses)
+            time.sleep(4) 
         return render_template("index.html", user_input=user_input, bot_response=bot_response)
+    
+    
+        # if not any(keyword in user_input.lower() for keyword in crypto_keywords):
+        #     bot_response = "Ask about cryptography you idiot! I'm a cryptography bot!"
+        # else:
+        #     chain = prompt | model
+        #     result = chain.invoke({"context": "", "question": user_input})
+        #     bot_response = result
+        # return render_template("index.html", user_input=user_input, bot_response=bot_response)
+        
+        
+        # chain = prompt | model
+        # result = chain.invoke({"context": "", "question": user_input})
+        # bot_response = result
+        # return render_template("index.html", user_input=user_input, bot_response=bot_response)
     else:
         return render_template('index.html')
 
