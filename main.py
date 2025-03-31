@@ -21,8 +21,6 @@ Question: {question}
 model_llama = "cryptohouse4"
 model = OllamaLLM(model=model_llama)
 prompt = ChatPromptTemplate.from_template(template)
-chain = prompt | model
-result = chain.invoke({"context": "", "question": "What is Cryptography Algorithms"})
 
 app = Flask(__name__)
 
