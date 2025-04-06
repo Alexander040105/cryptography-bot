@@ -18,7 +18,7 @@ Question: {question}
 """
 
 # model_llama = "cryptohouse3"
-model_llama = "cryptohouse5"
+model_llama = "cryptohouse"
 model = OllamaLLM(model=model_llama)
 prompt = ChatPromptTemplate.from_template(template)
 

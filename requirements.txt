@@ -12,9 +12,3 @@ langchain
 langchain-ollama 
 flask
 langchain_community
-faiss-cpu 
-tiktoken
-unsloth
-torch
-trl
-transformers
