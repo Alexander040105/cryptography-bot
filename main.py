@@ -47,7 +47,7 @@ def get_response_from_input():
                         "asymmetric encryption", "cryptanalysis", "cryptographic protocols", "ceasar cipher", "?", "cryptographic primitives", "cryptographic systems", "cryptographic keys",
                         "cryptographic algorithms", "cryptographic techniques", "cryptographic standards", "cryptographic methods", "cryptographic protocols", "ceasar cipher?", "ceasar",
                         "algorithm", "aes algorithm", "rsa algorithm", "sha-256 algorithm", "ecc algorithm", "cryptographic hash functions", "cryptographic hash function?", "cryptographic hash function",
-                        "block cipher?", "stream cipher?", "Dr. House", "House", "Dr. House?"
+                        "block cipher?", "stream cipher?", "house", "dr. house", "cryptography", "dr. house?"
                         ]
         
         
